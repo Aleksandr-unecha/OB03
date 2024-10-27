@@ -1,0 +1,12 @@
+{
+    "employees": [
+        {
+            "type": "ZooKeeper",
+            "name": "Джон"
+        },
+        {
+            "type": "Veterinarian",
+            "name": "Эмили"
+        }
+    ]
+}
