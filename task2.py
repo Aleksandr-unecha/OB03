@@ -1,52 +1,57 @@
 class Animal:
     def __init__(self, name, age):
-        self._name = name
-        self._age = age
+        self.name = name
+        self.age = age
 
-    def get_name(self):
-        return self._name
+    def make_sound(self):
+        raise NotImplementedError("Этот метод должен быть переопределен в подклассах.")
 
-    def set_name(self, name):
-        self._name = name
+    def info(self):
+        return f"{self.name} {self.age} лет."
 
-    def get_age(self):
-        return self._age
-
-# Подкласс Bird
 class Bird(Animal):
     def __init__(self, name, age, wing_span):
         super().__init__(name, age)
-        self.wing_span = wing_span  # размах крыльев, специфический атрибут для птиц
+        self.wing_span = wing_span
 
     def make_sound(self):
-        print("Птица чирикает")
+        return "Чирик-чирик!"
 
-# Подкласс Mammal
+    def info(self):
+        return f"{super().info()} Размах крыльев: {self.wing_span} см."
+
 class Mammal(Animal):
     def __init__(self, name, age, fur_color):
         super().__init__(name, age)
-        self.fur_color = fur_color  # цвет шерсти, специфический атрибут для млекопитающих
+        self.fur_color = fur_color
 
     def make_sound(self):
-        print("Млекопитающее издает звук")
+        return "Рык!"
 
-# Подкласс Reptile
+    def info(self):
+        return f"{super().info()} Цвет шерсти: {self.fur_color}."
+
 class Reptile(Animal):
     def __init__(self, name, age, scale_type):
         super().__init__(name, age)
-        self.scale_type = scale_type  # тип чешуи, специфический атрибут для рептилий
+        self.scale_type = scale_type
 
     def make_sound(self):
-        print("Рептилия шипит")
+        return "Шшш!"
 
-# Создание объектов
-sparrow = Bird("Воробей", 1, 25)
-mammal = Mammal("Млекопитающее", 2, "Черный")
-snake = Reptile("Змея", 2, "гладкая")
+    def info(self):
+        return f"{super().info()} Тип чешуи: {self.scale_type}."
 
-# Использование методов
-sparrow.make_sound()  # Вывод: Птица чирикает
+# Примеры использования классов
+parrot = Bird(name="Попугай", age=2, wing_span=25)
+tiger = Mammal(name="Тигр", age=5, fur_color="оранжевый")
+snake = Reptile(name="Змея", age=3, scale_type="гладкая")
 
-mammal.make_sound()  # Вывод: Млекопитающее издает звук
+print(parrot.info())  # Попугай 2 лет. Размах крыльев: 25 см.
+print(parrot.make_sound())  # Чирик-чирик!
 
-snake.make_sound()  # Вывод: Рептилия шипит
+print(tiger.info())  # Тигр 5 лет. Цвет шерсти: оранжевый.
+print(tiger.make_sound())  # Рык!
+
+print(snake.info())  # Змея 3 лет. Тип чешуи: гладкая.
+print(snake.make_sound())  # Шшш!
